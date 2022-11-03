@@ -1,0 +1,84 @@
+﻿<Window x:Class="baseball2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:baseball2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="284.026"/>
+            <RowDefinition Height="150.014"/>
+        </Grid.RowDefinitions>
+        <Canvas x:Name="background" HorizontalAlignment="Center" VerticalAlignment="Center" Height="284" Width="800" Grid.Column="1">
+            <Canvas.Background>
+                <ImageBrush ImageSource="/m_event_ground.jpg" Stretch="Fill" TileMode="None"/>
+            </Canvas.Background>
+            <Canvas x:Name="outGroup" Canvas.Left="560" Canvas.Top="92">
+                <Ellipse x:Name="outRound" Height="100" Width="100" Fill="#FFFF3030"/>
+                <TextBlock x:Name="outCount" TextWrapping="Wrap" Canvas.Left="37" Canvas.Top="22" TextAlignment="Center" FontFamily="Arial" FontSize="48"><Run Language="ko-kr" Text="0"/></TextBlock>
+            </Canvas>
+            <Canvas x:Name="strikeGroup" Canvas.Left="140" Canvas.Top="92">
+                <Ellipse x:Name="srikeRound" Height="100" Width="100" Fill="#FF3DF534"/>
+                <TextBlock x:Name="strikeCount" Canvas.Left="37" Canvas.Top="22" TextWrapping="Wrap" TextAlignment="Center" FontFamily="Arial" FontSize="48"><Run Language="ko-kr" Text="0"/></TextBlock>
+            </Canvas>
+            <Canvas x:Name="ballGroup" Height="100" Canvas.Left="350" Canvas.Top="92" Width="100">
+                <Ellipse x:Name="ballRound" Height="100" Width="100" Fill="#FFFFFF30"/>
+                <TextBlock x:Name="ballCount" Canvas.Left="37" Canvas.Top="22" TextWrapping="Wrap" TextAlignment="Center" FontFamily="Arial" FontSize="48" Text="0"/>
+            </Canvas>
+        </Canvas>
+        <Canvas Background="#FF8F8F8F" Grid.ColumnSpan="3" Margin="0,284,0,0" Grid.RowSpan="2">
+            <Button x:Name="submit" Content="제출" Canvas.Left="680" Canvas.Top="10" Width="75" Height="50" FontWeight="Bold" FontFamily="Arial" FontSize="22" Click="submit_Click"/>
+            <TextBox x:Name="inputBox" Canvas.Left="328" Canvas.Top="41" Text="123" TextWrapping="Wrap" Height="34" Width="144" FontFamily="Arial" FontSize="22" TextAlignment="Center" MaxLength="3" PreviewTextInput="inputBox_PreviewTextInput" GotFocus="inputBox_GotFocus" KeyDown="inputBox_KeyDown"/>
+            <Button x:Name="startButton" Content="게임시작" Canvas.Left="305" Canvas.Top="50" RenderTransformOrigin="-4.834,-1" Height="50" Width="190" FontFamily="Arial" FontSize="24" FontWeight="Bold" FontStyle="Italic" Click="startButton_Click" Visibility="Hidden">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <ComboBox x:Name="firstNum" Canvas.Left="321" Canvas.Top="84" Width="47" SelectionChanged="firstNum_SelectionChanged"/>
+            <ComboBox x:Name="secondNum" Canvas.Left="376" Canvas.Top="84" Width="47" SelectionChanged="secondNum_SelectionChanged"/>
+            <ComboBox x:Name="thirdNum" Canvas.Left="432" Canvas.Top="84" Width="47" SelectionChanged="thirdNum_SelectionChanged"/>
+            <Button x:Name="historyButton" Content="기록보기" Canvas.Left="680" Canvas.Top="73" Height="50" Width="75" FontSize="18" FontWeight="Bold" Click="historyButton_Click"/>
+        </Canvas>
+        <Canvas x:Name="tryCountGroup" Height="Auto" Margin="30,25,30,25" Grid.Row="1" Width="Auto">
+            <Ellipse x:Name="tryCountBall" Height="100" Stroke="Black" Width="100" Canvas.Top="-10">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/다운로드.jpg"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock x:Name="tryCount" TextWrapping="Wrap" FontFamily="Arial" FontSize="36" TextAlignment="Center" Canvas.Left="40" Canvas.Top="22"><Run Language="ko-kr" Text="0"/></TextBlock>
+        </Canvas>
+        <Ellipse x:Name="logo" Stroke="Black" Margin="0,10,0,0" Height="300" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" Grid.RowSpan="2" Grid.Column="1" Visibility="Hidden">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/data_illust_Bat.jpg"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBlock x:Name="title" Grid.Column="1" HorizontalAlignment="Center" Margin="0,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" FontWeight="Bold" FontFamily="Arial" FontSize="72" FontStyle="Normal" TextDecorations="{x:Null}" Foreground="Black" Visibility="Hidden"><Run Language="ko-kr" Text="야구게임"/></TextBlock>
+        <TextBlock x:Name="successMessage" HorizontalAlignment="Left" Margin="130,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Arial" FontSize="100" Width="560" Grid.ColumnSpan="3" Visibility="Hidden"><Run Language="ko-kr" Text="정답입니다!"/></TextBlock>
+        <Button x:Name="retryButton" Content="다시하기" Grid.Column="1" HorizontalAlignment="Center" Margin="0,29,0,0" Grid.Row="1" VerticalAlignment="Top" Height="50" Width="190" FontWeight="Bold" FontFamily="Arial" FontSize="24" FontStyle="Italic" Click="retryButton_Click" Visibility="Hidden">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Ellipse x:Name="scoreBall" Grid.Column="1" HorizontalAlignment="Center" Height="130" Margin="0,25,0,0" Stroke="Black" VerticalAlignment="Top" Width="130" Visibility="Hidden">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/다운로드.jpg"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBlock x:Name="scoreText" Grid.Column="1" HorizontalAlignment="Center" Margin="0,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="0" FontSize="72" Visibility="Hidden"/>
+        <Border x:Name="historyBorder"  Grid.Column="1" Grid.RowSpan="2" Width="270" Height="347" BorderBrush="#FF725122" Background="#FFA8751D">
+            <TextBlock x:Name="historyBlock" TextWrapping="Wrap" Background="#FF26762E" Grid.Column="1"  Grid.RowSpan="2" TextAlignment="Center" FontFamily="Arial" FontSize="16" Foreground="White" Text="기록" HorizontalAlignment="Center" Width="263" Height="340" VerticalAlignment="Center" />
+        </Border>
+
+    </Grid>
+</Window>

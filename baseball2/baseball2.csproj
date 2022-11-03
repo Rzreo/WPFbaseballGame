@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="data_illust_Bat.jpg" />
+    <None Remove="m_event_ground.jpg" />
+    <None Remove="title.jpg" />
+    <None Remove="다운로드.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="data_illust_Bat.jpg" />
+    <Resource Include="m_event_ground.jpg" />
+    <Resource Include="title.jpg" />
+    <Resource Include="다운로드.jpg" />
+  </ItemGroup>
+
+</Project>
