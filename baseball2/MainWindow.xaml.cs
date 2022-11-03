@@ -120,6 +120,10 @@ namespace baseball2
                 inputBox.Visibility = Visibility.Collapsed;
                 submit.Visibility = Visibility.Collapsed;
 
+                firstNum.Visibility = Visibility.Collapsed;
+                secondNum.Visibility = Visibility.Collapsed;
+                thirdNum.Visibility = Visibility.Collapsed;
+
                 successMessage.Visibility = Visibility.Visible;
                 retryButton.Visibility = Visibility.Visible;
 
